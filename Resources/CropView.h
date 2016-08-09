@@ -1,9 +1,9 @@
 //
 //  CropView.h
-//  PicSaw
+//  RTImageCroping
 //
-//  Created by Santhosh on 07/08/15.
-//  Copyright (c) 2015 Santhosh. All rights reserved.
+//  Created by Santhosh on 08/08/16.
+//  Copyright © 2016 riktam. All rights reserved.
 //
 
 #import <UIKit/UIKit.h>

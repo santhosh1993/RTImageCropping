@@ -1,6 +1,6 @@
 //
 //  ImageCroppingViewController.h
-//  PicSaw
+//  RTImageCroping
 //
 //  Created by Santhosh on 06/08/15.
 //  Copyright (c) 2015 Santhosh. All rights reserved.
