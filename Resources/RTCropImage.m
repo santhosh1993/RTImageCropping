@@ -1,15 +1,15 @@
 //
-//  CropImage.m
+//  RTCropImage.m
 //  RTImageCroping
 //
 //  Created by Santhosh on 08/08/16.
 //  Copyright © 2016 riktam. All rights reserved.
 //
 
-#import "CropImage.h"
+#import "RTCropImage.h"
 #import "UIImage+fixOrientation.h"
 
-@implementation CropImage
+@implementation RTCropImage
 
 + (UIImage *)cropImageWithUIImage:(UIImage *)cropImage WithCropRect:(CGRect)cropRect
 {

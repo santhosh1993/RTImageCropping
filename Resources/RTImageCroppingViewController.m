@@ -1,14 +1,14 @@
 //
-//  ImageCroppingViewController.m
+//  RTImageCroppingViewController.m
 //  RTImageCroping
 //
 //  Created by Santhosh on 08/08/16.
 //  Copyright © 2016 riktam. All rights reserved.
 //
 
-#import "ImageCroppingViewController.h"
-#import "CropView.h"
-#import "CropImage.h"
+#import "RTImageCroppingViewController.h"
+#import "RTCropView.h"
+#import "RTCropImage.h"
 
 #define TOP_VIEW 610
 #define CANCEL_BTN 611
@@ -27,7 +27,7 @@
 #define DEVICE_SCREEN_WIDTH [[UIScreen mainScreen] bounds].size.width
 
 
-@interface ImageCroppingViewController () <CropViewDelegate>
+@interface RTImageCroppingViewController () <RTCropViewDelegate>
 {
     CGSize imageSize;
     CGFloat minYposition;
@@ -49,7 +49,7 @@
 
 @end
 
-@implementation ImageCroppingViewController
+@implementation RTImageCroppingViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -124,7 +124,7 @@
     
     NSLog(@"%f %f",minYposition,imageVw.center.y);
     
-    CropView *cropingView = [[CropView alloc] initWithFrame:CGRectMake(DEVICE_SCREEN_WIDTH/2 - imageWidth/2,CGRectGetMidY(imageVw.frame) - imageHeight/2,imageWidth,imageHeight)];
+    RTCropView *cropingView = [[RTCropView alloc] initWithFrame:CGRectMake(DEVICE_SCREEN_WIDTH/2 - imageWidth/2,CGRectGetMidY(imageVw.frame) - imageHeight/2,imageWidth,imageHeight)];
     cropingView.tag = CROP_VIEW;
     cropingView.delegate = self;
     
@@ -206,7 +206,9 @@
 #pragma mark - Button action methods
 
 - (IBAction)cancelBtnClicked:(id)sender {
-    [self.navigationController popViewControllerAnimated:YES];
+    [self dismissViewControllerAnimated:YES completion:^{
+        
+    }];
 }
 
 - (IBAction)imageCropBtnClicked:(id)sender {
@@ -221,7 +223,7 @@
         UIImageView *croppingImageView = (UIImageView *)[self.view viewWithTag:IMAGE_VIEW];
         finalCropRect = CGRectMake(cropFrameRect.origin.x - (croppingImageView.frame.size.width/2 - self.cropImage.size.width/2) , cropFrameRect.origin.y - (croppingImageView.frame.size.height/2 - self.cropImage.size.height/2) - croppingImageView.frame.origin.y,cropFrameRect.size.width,cropFrameRect.size.height);
     }
-    UIImage *image = [CropImage cropImageWithUIImage:self.cropImage WithCropRect:finalCropRect];
+    UIImage *image = [RTCropImage cropImageWithUIImage:self.cropImage WithCropRect:finalCropRect];
    
     UIImageView *imageVw = (UIImageView *)[self.view viewWithTag:IMAGE_VIEW];
     imageVw.image = image;
@@ -237,8 +239,9 @@
 - (IBAction)saveBtnClicked:(id)sender {
 
     [self.delegate croppedImage:self.cropImage];
-    [self.navigationController popViewControllerAnimated:YES];
-    
+    [self dismissViewControllerAnimated:YES completion:^{
+        
+    }];
 }
 
 
@@ -300,7 +303,7 @@
 
 #pragma mark - DATA SOURCE
 
-- (void)setDataSource:(id<ImageCroppingViewControllerDataSource>)dataSource
+- (void)setDataSource:(id<RTImageCroppingViewControllerDataSource>)dataSource
 {
     _dataSource = dataSource;
 }

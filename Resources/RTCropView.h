@@ -1,5 +1,5 @@
 //
-//  CropView.h
+//  RTCropView.h
 //  RTImageCroping
 //
 //  Created by Santhosh on 08/08/16.
@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-@protocol CropViewDelegate <NSObject>
+@protocol RTCropViewDelegate <NSObject>
 
 - (void)panGestureRecognised:(UIPanGestureRecognizer *)recognizer;
 - (void)leftToppanGestureRecognised:(UIPanGestureRecognizer *)recognizer;
@@ -18,8 +18,8 @@
 
 @end
 
-@interface CropView : UIView
+@interface RTCropView : UIView
 
-@property (nonatomic , weak) id <CropViewDelegate> delegate;
+@property (nonatomic , weak) id <RTCropViewDelegate> delegate;
 
 @end

@@ -7,7 +7,7 @@
 //
 
 #import "ViewController.h"
-#import "ImageCroppingViewController.h"
+#import "RTImageCroppingViewController.h"
 
 @interface ViewController ()
 
@@ -18,9 +18,11 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    ImageCroppingViewController *croppingVc = [[ImageCroppingViewController alloc] init];
+    RTImageCroppingViewController *croppingVc = [[RTImageCroppingViewController alloc] init];
     croppingVc.cropImage = [UIImage imageNamed:@"FacebookSCOREshareDING.jpg"];
-    [self.navigationController pushViewController:croppingVc animated:YES];
+    [self presentViewController:croppingVc animated:YES completion:^{
+        
+    }];
     // Do any additional setup after loading the view, typically from a nib.
 }
 

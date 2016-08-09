@@ -5,7 +5,7 @@
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
     </dependencies>
     <objects>
-        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="ImageCroppingViewController">
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="RTImageCroppingViewController">
             <connections>
                 <outlet property="bottomBlurViewBottomConstraint" destination="rQq-wS-hbd" id="mtf-br-wfQ"/>
                 <outlet property="bottomBlurViewHeightConstraint" destination="74q-k1-OVX" id="J9k-P3-x49"/>
@@ -13,8 +13,8 @@
                 <outlet property="leftBlurViewWidthConstraint" destination="OFV-dd-db1" id="bf6-Dn-6E7"/>
                 <outlet property="rightBlurViewRightConstraint" destination="w9t-sx-B0L" id="UYK-VZ-dg4"/>
                 <outlet property="rightBlurViewWidthConstraint" destination="AJj-Zx-sfH" id="LO5-eL-naK"/>
-                <outlet property="topBlurViewHeightConstraint" destination="HKc-FI-Xmd" id="U2Y-bP-rI2"/>
-                <outlet property="topBlurViewTopConstraint" destination="oiv-Ig-USJ" id="lhR-om-PMe"/>
+                <outlet property="topBlurViewHeightConstraint" destination="HKc-FI-Xmd" id="RYP-iB-P5n"/>
+                <outlet property="topBlurViewTopConstraint" destination="oiv-Ig-USJ" id="Kv9-7Y-N4l"/>
                 <outlet property="view" destination="OEN-06-hMH" id="cgD-5d-9do"/>
             </connections>
         </placeholder>
