@@ -13,6 +13,18 @@
 		7FE6C97A1D59AB1D0057F0D1 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7FE6C9781D59AB1D0057F0D1 /* Main.storyboard */; };
 		7FE6C97C1D59AB1D0057F0D1 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7FE6C97B1D59AB1D0057F0D1 /* Assets.xcassets */; };
 		7FE6C97F1D59AB1D0057F0D1 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7FE6C97D1D59AB1D0057F0D1 /* LaunchScreen.storyboard */; };
+		7FE6C9901D59AB910057F0D1 /* ImageCroppingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7FE6C9881D59AB910057F0D1 /* ImageCroppingViewController.m */; };
+		7FE6C9911D59AB910057F0D1 /* ImageCroppingViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7FE6C9891D59AB910057F0D1 /* ImageCroppingViewController.xib */; };
+		7FE6C9921D59AB910057F0D1 /* CropImage.m in Sources */ = {isa = PBXBuildFile; fileRef = 7FE6C98B1D59AB910057F0D1 /* CropImage.m */; };
+		7FE6C9931D59AB910057F0D1 /* CropView.m in Sources */ = {isa = PBXBuildFile; fileRef = 7FE6C98D1D59AB910057F0D1 /* CropView.m */; };
+		7FE6C9941D59AB910057F0D1 /* UIImage+fixOrientation.m in Sources */ = {isa = PBXBuildFile; fileRef = 7FE6C98F1D59AB910057F0D1 /* UIImage+fixOrientation.m */; };
+		7FE6C99D1D59ABB10057F0D1 /* cr1.png in Resources */ = {isa = PBXBuildFile; fileRef = 7FE6C9961D59ABB10057F0D1 /* cr1.png */; };
+		7FE6C99E1D59ABB10057F0D1 /* cr1@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 7FE6C9971D59ABB10057F0D1 /* cr1@2x.png */; };
+		7FE6C99F1D59ABB10057F0D1 /* cr2.png in Resources */ = {isa = PBXBuildFile; fileRef = 7FE6C9981D59ABB10057F0D1 /* cr2.png */; };
+		7FE6C9A01D59ABB10057F0D1 /* cr2@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 7FE6C9991D59ABB10057F0D1 /* cr2@2x.png */; };
+		7FE6C9A11D59ABB10057F0D1 /* cr3.png in Resources */ = {isa = PBXBuildFile; fileRef = 7FE6C99A1D59ABB10057F0D1 /* cr3.png */; };
+		7FE6C9A21D59ABB10057F0D1 /* cr3@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 7FE6C99B1D59ABB10057F0D1 /* cr3@2x.png */; };
+		7FE6C9A31D59ABB10057F0D1 /* cr4.png in Resources */ = {isa = PBXBuildFile; fileRef = 7FE6C99C1D59ABB10057F0D1 /* cr4.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -26,6 +38,22 @@
 		7FE6C97B1D59AB1D0057F0D1 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		7FE6C97E1D59AB1D0057F0D1 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		7FE6C9801D59AB1D0057F0D1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		7FE6C9871D59AB910057F0D1 /* ImageCroppingViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ImageCroppingViewController.h; path = Resources/ImageCroppingViewController.h; sourceTree = SOURCE_ROOT; };
+		7FE6C9881D59AB910057F0D1 /* ImageCroppingViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ImageCroppingViewController.m; path = Resources/ImageCroppingViewController.m; sourceTree = SOURCE_ROOT; };
+		7FE6C9891D59AB910057F0D1 /* ImageCroppingViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = ImageCroppingViewController.xib; path = Resources/ImageCroppingViewController.xib; sourceTree = SOURCE_ROOT; };
+		7FE6C98A1D59AB910057F0D1 /* CropImage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CropImage.h; path = Resources/CropImage.h; sourceTree = SOURCE_ROOT; };
+		7FE6C98B1D59AB910057F0D1 /* CropImage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CropImage.m; path = Resources/CropImage.m; sourceTree = SOURCE_ROOT; };
+		7FE6C98C1D59AB910057F0D1 /* CropView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CropView.h; path = Resources/CropView.h; sourceTree = SOURCE_ROOT; };
+		7FE6C98D1D59AB910057F0D1 /* CropView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CropView.m; path = Resources/CropView.m; sourceTree = SOURCE_ROOT; };
+		7FE6C98E1D59AB910057F0D1 /* UIImage+fixOrientation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "UIImage+fixOrientation.h"; path = "Resources/UIImage+fixOrientation.h"; sourceTree = SOURCE_ROOT; };
+		7FE6C98F1D59AB910057F0D1 /* UIImage+fixOrientation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "UIImage+fixOrientation.m"; path = "Resources/UIImage+fixOrientation.m"; sourceTree = SOURCE_ROOT; };
+		7FE6C9961D59ABB10057F0D1 /* cr1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = cr1.png; path = Resources/Images/cr1.png; sourceTree = SOURCE_ROOT; };
+		7FE6C9971D59ABB10057F0D1 /* cr1@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "cr1@2x.png"; path = "Resources/Images/cr1@2x.png"; sourceTree = SOURCE_ROOT; };
+		7FE6C9981D59ABB10057F0D1 /* cr2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = cr2.png; path = Resources/Images/cr2.png; sourceTree = SOURCE_ROOT; };
+		7FE6C9991D59ABB10057F0D1 /* cr2@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "cr2@2x.png"; path = "Resources/Images/cr2@2x.png"; sourceTree = SOURCE_ROOT; };
+		7FE6C99A1D59ABB10057F0D1 /* cr3.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = cr3.png; path = Resources/Images/cr3.png; sourceTree = SOURCE_ROOT; };
+		7FE6C99B1D59ABB10057F0D1 /* cr3@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "cr3@2x.png"; path = "Resources/Images/cr3@2x.png"; sourceTree = SOURCE_ROOT; };
+		7FE6C99C1D59ABB10057F0D1 /* cr4.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = cr4.png; path = Resources/Images/cr4.png; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -58,6 +86,7 @@
 		7FE6C96E1D59AB1D0057F0D1 /* RTImageCropping */ = {
 			isa = PBXGroup;
 			children = (
+				7FE6C9861D59AB7B0057F0D1 /* Resources */,
 				7FE6C9721D59AB1D0057F0D1 /* AppDelegate.h */,
 				7FE6C9731D59AB1D0057F0D1 /* AppDelegate.m */,
 				7FE6C9751D59AB1D0057F0D1 /* ViewController.h */,
@@ -77,6 +106,37 @@
 				7FE6C9701D59AB1D0057F0D1 /* main.m */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		7FE6C9861D59AB7B0057F0D1 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				7FE6C9951D59AB9F0057F0D1 /* images */,
+				7FE6C9871D59AB910057F0D1 /* ImageCroppingViewController.h */,
+				7FE6C9881D59AB910057F0D1 /* ImageCroppingViewController.m */,
+				7FE6C9891D59AB910057F0D1 /* ImageCroppingViewController.xib */,
+				7FE6C98A1D59AB910057F0D1 /* CropImage.h */,
+				7FE6C98B1D59AB910057F0D1 /* CropImage.m */,
+				7FE6C98C1D59AB910057F0D1 /* CropView.h */,
+				7FE6C98D1D59AB910057F0D1 /* CropView.m */,
+				7FE6C98E1D59AB910057F0D1 /* UIImage+fixOrientation.h */,
+				7FE6C98F1D59AB910057F0D1 /* UIImage+fixOrientation.m */,
+			);
+			name = Resources;
+			sourceTree = "<group>";
+		};
+		7FE6C9951D59AB9F0057F0D1 /* images */ = {
+			isa = PBXGroup;
+			children = (
+				7FE6C9961D59ABB10057F0D1 /* cr1.png */,
+				7FE6C9971D59ABB10057F0D1 /* cr1@2x.png */,
+				7FE6C9981D59ABB10057F0D1 /* cr2.png */,
+				7FE6C9991D59ABB10057F0D1 /* cr2@2x.png */,
+				7FE6C99A1D59ABB10057F0D1 /* cr3.png */,
+				7FE6C99B1D59ABB10057F0D1 /* cr3@2x.png */,
+				7FE6C99C1D59ABB10057F0D1 /* cr4.png */,
+			);
+			name = images;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -136,9 +196,17 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7FE6C99F1D59ABB10057F0D1 /* cr2.png in Resources */,
+				7FE6C9911D59AB910057F0D1 /* ImageCroppingViewController.xib in Resources */,
 				7FE6C97F1D59AB1D0057F0D1 /* LaunchScreen.storyboard in Resources */,
 				7FE6C97C1D59AB1D0057F0D1 /* Assets.xcassets in Resources */,
+				7FE6C99D1D59ABB10057F0D1 /* cr1.png in Resources */,
 				7FE6C97A1D59AB1D0057F0D1 /* Main.storyboard in Resources */,
+				7FE6C9A11D59ABB10057F0D1 /* cr3.png in Resources */,
+				7FE6C9A01D59ABB10057F0D1 /* cr2@2x.png in Resources */,
+				7FE6C99E1D59ABB10057F0D1 /* cr1@2x.png in Resources */,
+				7FE6C9A31D59ABB10057F0D1 /* cr4.png in Resources */,
+				7FE6C9A21D59ABB10057F0D1 /* cr3@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -149,8 +217,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7FE6C9901D59AB910057F0D1 /* ImageCroppingViewController.m in Sources */,
+				7FE6C9941D59AB910057F0D1 /* UIImage+fixOrientation.m in Sources */,
+				7FE6C9921D59AB910057F0D1 /* CropImage.m in Sources */,
 				7FE6C9771D59AB1D0057F0D1 /* ViewController.m in Sources */,
 				7FE6C9741D59AB1D0057F0D1 /* AppDelegate.m in Sources */,
+				7FE6C9931D59AB910057F0D1 /* CropView.m in Sources */,
 				7FE6C9711D59AB1D0057F0D1 /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
