@@ -9,7 +9,7 @@
 #import <Foundation/Foundation.h>
 #import <UIKit/UIKit.h>
 
-@interface RTCropImage : NSObject
+@interface UIImage (RTCropImage)
 
 + (UIImage *)cropImageWithUIImage:(UIImage *)cropImage WithCropRect:(CGRect)cropRect;
 + (UIImage *)rotateImage:(UIImage *)image;

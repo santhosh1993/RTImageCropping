@@ -15,7 +15,7 @@
 		7FE6C97F1D59AB1D0057F0D1 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7FE6C97D1D59AB1D0057F0D1 /* LaunchScreen.storyboard */; };
 		7FE6C9901D59AB910057F0D1 /* RTImageCroppingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7FE6C9881D59AB910057F0D1 /* RTImageCroppingViewController.m */; };
 		7FE6C9911D59AB910057F0D1 /* RTImageCroppingViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7FE6C9891D59AB910057F0D1 /* RTImageCroppingViewController.xib */; };
-		7FE6C9921D59AB910057F0D1 /* RTCropImage.m in Sources */ = {isa = PBXBuildFile; fileRef = 7FE6C98B1D59AB910057F0D1 /* RTCropImage.m */; };
+		7FE6C9921D59AB910057F0D1 /* UIImage+RTCropImage.m in Sources */ = {isa = PBXBuildFile; fileRef = 7FE6C98B1D59AB910057F0D1 /* UIImage+RTCropImage.m */; };
 		7FE6C9931D59AB910057F0D1 /* RTCropView.m in Sources */ = {isa = PBXBuildFile; fileRef = 7FE6C98D1D59AB910057F0D1 /* RTCropView.m */; };
 		7FE6C9941D59AB910057F0D1 /* UIImage+fixOrientation.m in Sources */ = {isa = PBXBuildFile; fileRef = 7FE6C98F1D59AB910057F0D1 /* UIImage+fixOrientation.m */; };
 		7FE6C99D1D59ABB10057F0D1 /* cr1.png in Resources */ = {isa = PBXBuildFile; fileRef = 7FE6C9961D59ABB10057F0D1 /* cr1.png */; };
@@ -41,8 +41,8 @@
 		7FE6C9871D59AB910057F0D1 /* RTImageCroppingViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RTImageCroppingViewController.h; path = Resources/RTImageCroppingViewController.h; sourceTree = SOURCE_ROOT; };
 		7FE6C9881D59AB910057F0D1 /* RTImageCroppingViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = RTImageCroppingViewController.m; path = Resources/RTImageCroppingViewController.m; sourceTree = SOURCE_ROOT; };
 		7FE6C9891D59AB910057F0D1 /* RTImageCroppingViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = RTImageCroppingViewController.xib; path = Resources/RTImageCroppingViewController.xib; sourceTree = SOURCE_ROOT; };
-		7FE6C98A1D59AB910057F0D1 /* RTCropImage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RTCropImage.h; path = Resources/RTCropImage.h; sourceTree = SOURCE_ROOT; };
-		7FE6C98B1D59AB910057F0D1 /* RTCropImage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = RTCropImage.m; path = Resources/RTCropImage.m; sourceTree = SOURCE_ROOT; };
+		7FE6C98A1D59AB910057F0D1 /* UIImage+RTCropImage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "UIImage+RTCropImage.h"; path = "Resources/UIImage+RTCropImage.h"; sourceTree = SOURCE_ROOT; };
+		7FE6C98B1D59AB910057F0D1 /* UIImage+RTCropImage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "UIImage+RTCropImage.m"; path = "Resources/UIImage+RTCropImage.m"; sourceTree = SOURCE_ROOT; };
 		7FE6C98C1D59AB910057F0D1 /* RTCropView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RTCropView.h; path = Resources/RTCropView.h; sourceTree = SOURCE_ROOT; };
 		7FE6C98D1D59AB910057F0D1 /* RTCropView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = RTCropView.m; path = Resources/RTCropView.m; sourceTree = SOURCE_ROOT; };
 		7FE6C98E1D59AB910057F0D1 /* UIImage+fixOrientation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "UIImage+fixOrientation.h"; path = "Resources/UIImage+fixOrientation.h"; sourceTree = SOURCE_ROOT; };
@@ -115,12 +115,9 @@
 				7FE6C9871D59AB910057F0D1 /* RTImageCroppingViewController.h */,
 				7FE6C9881D59AB910057F0D1 /* RTImageCroppingViewController.m */,
 				7FE6C9891D59AB910057F0D1 /* RTImageCroppingViewController.xib */,
-				7FE6C98A1D59AB910057F0D1 /* RTCropImage.h */,
-				7FE6C98B1D59AB910057F0D1 /* RTCropImage.m */,
 				7FE6C98C1D59AB910057F0D1 /* RTCropView.h */,
 				7FE6C98D1D59AB910057F0D1 /* RTCropView.m */,
-				7FE6C98E1D59AB910057F0D1 /* UIImage+fixOrientation.h */,
-				7FE6C98F1D59AB910057F0D1 /* UIImage+fixOrientation.m */,
+				E07102C51D883CFD00608A0F /* UIImage Categories */,
 			);
 			name = Resources;
 			sourceTree = "<group>";
@@ -137,6 +134,17 @@
 				7FE6C99C1D59ABB10057F0D1 /* cr4.png */,
 			);
 			name = images;
+			sourceTree = "<group>";
+		};
+		E07102C51D883CFD00608A0F /* UIImage Categories */ = {
+			isa = PBXGroup;
+			children = (
+				7FE6C98A1D59AB910057F0D1 /* UIImage+RTCropImage.h */,
+				7FE6C98B1D59AB910057F0D1 /* UIImage+RTCropImage.m */,
+				7FE6C98E1D59AB910057F0D1 /* UIImage+fixOrientation.h */,
+				7FE6C98F1D59AB910057F0D1 /* UIImage+fixOrientation.m */,
+			);
+			name = "UIImage Categories";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -219,7 +227,7 @@
 			files = (
 				7FE6C9901D59AB910057F0D1 /* RTImageCroppingViewController.m in Sources */,
 				7FE6C9941D59AB910057F0D1 /* UIImage+fixOrientation.m in Sources */,
-				7FE6C9921D59AB910057F0D1 /* RTCropImage.m in Sources */,
+				7FE6C9921D59AB910057F0D1 /* UIImage+RTCropImage.m in Sources */,
 				7FE6C9771D59AB1D0057F0D1 /* ViewController.m in Sources */,
 				7FE6C9741D59AB1D0057F0D1 /* AppDelegate.m in Sources */,
 				7FE6C9931D59AB910057F0D1 /* RTCropView.m in Sources */,
@@ -374,6 +382,7 @@
 				7FE6C9851D59AB1D0057F0D1 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

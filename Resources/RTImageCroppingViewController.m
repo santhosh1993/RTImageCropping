@@ -8,7 +8,7 @@
 
 #import "RTImageCroppingViewController.h"
 #import "RTCropView.h"
-#import "RTCropImage.h"
+#import "UIImage+RTCropImage.h"
 
 #define TOP_VIEW 610
 #define CANCEL_BTN 611
@@ -36,6 +36,7 @@
     CGFloat maxXposition;
     float aspectRatio;
     CGSize cropSize;
+    
 }
 
 @property (unsafe_unretained, nonatomic) IBOutlet NSLayoutConstraint *rightBlurViewRightConstraint;
@@ -223,7 +224,7 @@
         UIImageView *croppingImageView = (UIImageView *)[self.view viewWithTag:IMAGE_VIEW];
         finalCropRect = CGRectMake(cropFrameRect.origin.x - (croppingImageView.frame.size.width/2 - self.cropImage.size.width/2) , cropFrameRect.origin.y - (croppingImageView.frame.size.height/2 - self.cropImage.size.height/2) - croppingImageView.frame.origin.y,cropFrameRect.size.width,cropFrameRect.size.height);
     }
-    UIImage *image = [RTCropImage cropImageWithUIImage:self.cropImage WithCropRect:finalCropRect];
+    UIImage *image = [UIImage cropImageWithUIImage:self.cropImage WithCropRect:finalCropRect];
    
     UIImageView *imageVw = (UIImageView *)[self.view viewWithTag:IMAGE_VIEW];
     imageVw.image = image;

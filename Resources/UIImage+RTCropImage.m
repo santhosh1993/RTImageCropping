@@ -6,10 +6,10 @@
 //  Copyright © 2016 riktam. All rights reserved.
 //
 
-#import "RTCropImage.h"
+#import "UIImage+RTCropImage.h"
 #import "UIImage+fixOrientation.h"
 
-@implementation RTCropImage
+@implementation UIImage (RTCropImage)
 
 + (UIImage *)cropImageWithUIImage:(UIImage *)cropImage WithCropRect:(CGRect)cropRect
 {
