@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="10117" systemVersion="15E65" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="10117" systemVersion="15G31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
@@ -7,14 +7,24 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="RTImageCroppingViewController">
             <connections>
+                <outlet property="activityIndicatorView" destination="52A-gM-n5e" id="MJ1-MJ-ySe"/>
+                <outlet property="bottomBlurView" destination="GAS-6J-do9" id="6Z6-s0-vbl"/>
                 <outlet property="bottomBlurViewBottomConstraint" destination="rQq-wS-hbd" id="mtf-br-wfQ"/>
                 <outlet property="bottomBlurViewHeightConstraint" destination="74q-k1-OVX" id="J9k-P3-x49"/>
+                <outlet property="cancelButton" destination="jmC-vE-aYG" id="CuU-Mk-QsB"/>
+                <outlet property="cropButton" destination="SvP-gy-8hv" id="m8z-Fi-jVq"/>
+                <outlet property="imageView" destination="jN6-0Y-YPw" id="pfY-KJ-oK2"/>
+                <outlet property="leftBlurView" destination="Y41-XJ-IJS" id="vuR-Fj-g2U"/>
                 <outlet property="leftBlurViewLeftConstraint" destination="5d5-RQ-6FK" id="gsv-Wo-Zz4"/>
                 <outlet property="leftBlurViewWidthConstraint" destination="OFV-dd-db1" id="bf6-Dn-6E7"/>
+                <outlet property="rightBlurView" destination="TNq-iY-7KN" id="E8J-0V-cCu"/>
                 <outlet property="rightBlurViewRightConstraint" destination="w9t-sx-B0L" id="UYK-VZ-dg4"/>
                 <outlet property="rightBlurViewWidthConstraint" destination="AJj-Zx-sfH" id="LO5-eL-naK"/>
+                <outlet property="saveButton" destination="YBM-1V-Kgk" id="te6-30-iuJ"/>
+                <outlet property="topBlurView" destination="KqZ-qz-KtS" id="bMr-ev-aIF"/>
                 <outlet property="topBlurViewHeightConstraint" destination="HKc-FI-Xmd" id="RYP-iB-P5n"/>
                 <outlet property="topBlurViewTopConstraint" destination="oiv-Ig-USJ" id="Kv9-7Y-N4l"/>
+                <outlet property="topView" destination="DWa-KT-lbO" id="v22-yc-EAw"/>
                 <outlet property="view" destination="OEN-06-hMH" id="cgD-5d-9do"/>
             </connections>
         </placeholder>

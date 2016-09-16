@@ -10,20 +10,6 @@
 #import "RTCropView.h"
 #import "UIImage+RTCropImage.h"
 
-#define TOP_VIEW 610
-#define CANCEL_BTN 611
-#define CROP_BTN 612
-#define SAVE_BTN 613
-
-#define IMAGE_VIEW 620
-#define TOP_BLUR_VIEW 621
-#define LEFT_BLUR_VIEW 622
-#define RIGHT_BLUR_VIEW 623
-#define BOTTOM_BLUR_VIEW 624
-
-#define CROP_VIEW 630
-#define ACTIVITY_INDICATOR 640
-
 #define DEVICE_SCREEN_WIDTH [[UIScreen mainScreen] bounds].size.width
 
 
@@ -36,6 +22,22 @@
     CGFloat maxXposition;
     float aspectRatio;
     CGSize cropSize;
+    
+    __weak IBOutlet UIView *topBlurView;
+    __weak IBOutlet UIView *rightBlurView;
+    __weak IBOutlet UIView *leftBlurView;
+    __weak IBOutlet UIView *bottomBlurView;
+    
+    __weak IBOutlet UIView *topView;
+    
+    __weak IBOutlet UIButton *cancelButton;
+    __weak IBOutlet UIButton *cropButton;
+    __weak IBOutlet UIButton *saveButton;
+    
+    __weak IBOutlet UIImageView *imageView;
+     RTCropView *cropView;
+    
+    __weak IBOutlet UIActivityIndicatorView *activityIndicatorView;
     
 }
 
@@ -54,15 +56,15 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    [(UIActivityIndicatorView *)[self.view viewWithTag:ACTIVITY_INDICATOR] startAnimating];
+    [activityIndicatorView startAnimating];
 }
 
 -(void)viewDidAppear:(BOOL)animated
 {
     [super viewDidAppear:animated];
     [self setUpCroppingView];
-    [self.view bringSubviewToFront:[self.view viewWithTag:CROP_VIEW]];
-    [(UIActivityIndicatorView *)[self.view viewWithTag:ACTIVITY_INDICATOR] stopAnimating];
+    [self.view bringSubviewToFront:cropView];
+    [activityIndicatorView stopAnimating];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -98,13 +100,13 @@
     
     NSData *imageData = UIImagePNGRepresentation(picture1);
     self.cropImage =[UIImage imageWithData:imageData];
-    [(UIImageView *)[self.view viewWithTag:IMAGE_VIEW] setImage:self.cropImage];
+    [imageView setImage:self.cropImage];
 }
 
 - (void)setUpCroppingView
 {
-    UIImageView *imageVw = (UIImageView *)[self.view viewWithTag:IMAGE_VIEW];
-    imageVw.image = self.cropImage;
+    
+    imageView.image = self.cropImage;
     
     cropSize = [self imageCroppingSize];
     CGFloat imageWidth = cropSize.width;
@@ -112,26 +114,25 @@
     
     aspectRatio = imageWidth/imageHeight;
     
-    minYposition = imageVw.center.y - (self.cropImage.size.height / (2*[self multiplier]));
-    maxYposition = imageVw.center.y + (self.cropImage.size.height / (2*[self multiplier]));
+    minYposition = imageView.center.y - (self.cropImage.size.height / (2*[self multiplier]));
+    maxYposition = imageView.center.y + (self.cropImage.size.height / (2*[self multiplier]));
     
-    minXposition = imageVw.center.x - (self.cropImage.size.width / (2*[self multiplier]));
-    maxXposition = imageVw.center.x + (self.cropImage.size.width / (2*[self multiplier]));
+    minXposition = imageView.center.x - (self.cropImage.size.width / (2*[self multiplier]));
+    maxXposition = imageView.center.x + (self.cropImage.size.width / (2*[self multiplier]));
     
-    if(self.cropImage.size.width < imageVw.frame.size.width && self.cropImage.size.height < imageVw.frame.size.height)
+    if(self.cropImage.size.width < imageView.frame.size.width && self.cropImage.size.height < imageView.frame.size.height)
     {
-        imageVw.contentMode = UIViewContentModeCenter;
+        imageView.contentMode = UIViewContentModeCenter;
     }
     
-    NSLog(@"%f %f",minYposition,imageVw.center.y);
+    NSLog(@"%f %f",minYposition,imageView.center.y);
     
-    RTCropView *cropingView = [[RTCropView alloc] initWithFrame:CGRectMake(DEVICE_SCREEN_WIDTH/2 - imageWidth/2,CGRectGetMidY(imageVw.frame) - imageHeight/2,imageWidth,imageHeight)];
-    cropingView.tag = CROP_VIEW;
-    cropingView.delegate = self;
+    cropView = [[RTCropView alloc] initWithFrame:CGRectMake(DEVICE_SCREEN_WIDTH/2 - imageWidth/2,CGRectGetMidY(imageView.frame) - imageHeight/2,imageWidth,imageHeight)];
+    cropView.delegate = self;
     
-    [self updateBlurViewFrames:cropingView.frame];
+    [self updateBlurViewFrames:cropView.frame];
     
-    [self.view addSubview:cropingView];
+    [self.view addSubview:cropView];
 }
 
 #pragma mark - Gesture recogniser methods
@@ -214,26 +215,24 @@
 
 - (IBAction)imageCropBtnClicked:(id)sender {
     
-    CGRect cropFrameRect = [self.view viewWithTag:CROP_VIEW].frame;
+    CGRect cropFrameRect = cropView.frame;
     CGFloat multiplier = [self multiplier];
     
     CGRect finalCropRect = CGRectMake((cropFrameRect.origin.x - minXposition + 20) *multiplier , (cropFrameRect.origin.y - minYposition + 20)* multiplier, (cropFrameRect.size.width - 40) * multiplier,(cropFrameRect.size.height - 40) * multiplier);
     
-    if([self.view viewWithTag:IMAGE_VIEW].contentMode == UIViewContentModeCenter)
+    if(imageView.contentMode == UIViewContentModeCenter)
     {
-        UIImageView *croppingImageView = (UIImageView *)[self.view viewWithTag:IMAGE_VIEW];
-        finalCropRect = CGRectMake(cropFrameRect.origin.x - (croppingImageView.frame.size.width/2 - self.cropImage.size.width/2) , cropFrameRect.origin.y - (croppingImageView.frame.size.height/2 - self.cropImage.size.height/2) - croppingImageView.frame.origin.y,cropFrameRect.size.width,cropFrameRect.size.height);
+        finalCropRect = CGRectMake(cropFrameRect.origin.x - (imageView.frame.size.width/2 - self.cropImage.size.width/2) , cropFrameRect.origin.y - (imageView.frame.size.height/2 - self.cropImage.size.height/2) - imageView.frame.origin.y,cropFrameRect.size.width,cropFrameRect.size.height);
     }
     UIImage *image = [UIImage cropImageWithUIImage:self.cropImage WithCropRect:finalCropRect];
-   
-    UIImageView *imageVw = (UIImageView *)[self.view viewWithTag:IMAGE_VIEW];
-    imageVw.image = image;
+
     
+    imageView.image = image;
     self.cropImage = image;
     
     [(UIButton *)sender setHidden:YES];
     [self hideTheCrropingView];
-    [self.view viewWithTag:SAVE_BTN].hidden = NO;
+    saveButton.hidden = NO;
 
 }
 
@@ -250,7 +249,7 @@
 
 - (CGFloat)multiplier
 {
-    CGRect imageRect = [self.view viewWithTag:IMAGE_VIEW].frame;
+    CGRect imageRect = imageView.frame;
 
     CGFloat multiplier = ((self.cropImage.size.height / imageRect.size.height)  > (self.cropImage.size.width / imageRect.size.width))?((self.cropImage.size.height > imageRect.size.height)? self.cropImage.size.height / imageRect.size.height : 1 ):((self.cropImage.size.width > imageRect.size.width)? self.cropImage.size.width / imageRect.size.width  : 1);
     
@@ -274,27 +273,27 @@
 
 - (void)updateBlurViewFrames:(CGRect)frame
 {
-    self.topBlurViewTopConstraint.constant = minYposition - [self.view viewWithTag:TOP_VIEW].frame.size.height ;
+    self.topBlurViewTopConstraint.constant = minYposition - topView.frame.size.height ;
     self.topBlurViewHeightConstraint.constant = frame.origin.y - minYposition + 18;
 
     self.leftBlurViewLeftConstraint.constant = minXposition;
     self.leftBlurViewWidthConstraint.constant = frame.origin.x - minXposition + 18;
     
-    self.rightBlurViewRightConstraint.constant = maxXposition - [[self.view viewWithTag:IMAGE_VIEW] frame].size.width;
+    self.rightBlurViewRightConstraint.constant = maxXposition - [imageView frame].size.width;
     self.rightBlurViewWidthConstraint.constant = maxXposition - frame.origin.x - frame.size.width + 18;
     
-    self.bottomBlurViewBottomConstraint.constant = maxYposition - [self.view viewWithTag:IMAGE_VIEW].frame.size.height - [self.view viewWithTag:IMAGE_VIEW].frame.origin.y;
+    self.bottomBlurViewBottomConstraint.constant = maxYposition - imageView.frame.size.height - imageView.frame.origin.y;
     self.bottomBlurViewHeightConstraint.constant =  maxYposition - frame.origin.y - frame.size.height + 18;
 }
 
 - (void)hideTheCrropingView
 {
-    [self.view viewWithTag:TOP_BLUR_VIEW].hidden = YES;
-    [self.view viewWithTag:LEFT_BLUR_VIEW].hidden = YES;
-    [self.view viewWithTag:RIGHT_BLUR_VIEW].hidden = YES;
-    [self.view viewWithTag:BOTTOM_BLUR_VIEW].hidden = YES;
+    topBlurView.hidden = YES;
+    leftBlurView.hidden = YES;
+    rightBlurView.hidden = YES;
+    bottomBlurView.hidden = YES;
     
-    [self.view viewWithTag:CROP_VIEW].hidden = YES;
+    cropView.hidden = YES;
 }
 
 -(void)dealloc
