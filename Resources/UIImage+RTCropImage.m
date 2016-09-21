@@ -11,7 +11,7 @@
 
 @implementation UIImage (RTCropImage)
 
-+ (UIImage *)cropImageWithUIImage:(UIImage *)cropImage WithCropRect:(CGRect)cropRect
++ (UIImage *)cropImageWithUIImage:(UIImage *)cropImage WithCropRect:(CGRect)cropRect withCornerRadius:(float) cornerRadius withFrameRect:(CGSize)frameSize
 {
     CGAffineTransform rectTransform;
     
@@ -43,6 +43,11 @@
     
     CGImageRelease(imageRef);
 
+    if (cornerRadius != 0)
+    {
+        image = [self circularScaleAndCropImage:image frame:frameSize withCornerRadius:cornerRadius];
+    }
+    
     return image;
 }
 
@@ -72,5 +77,60 @@
     return (imageView.image);
 }
 
++ (UIImage*)circularScaleAndCropImage:(UIImage*)image frame:(CGSize)frame withCornerRadius:(float)cornerRadius{
+
+    //Create the bitmap graphics context
+    UIGraphicsBeginImageContextWithOptions(CGSizeMake(image.size.width, image.size.height), NO, 0.0);
+    CGContextRef context = UIGraphicsGetCurrentContext();
+    
+    //Get the width and heights
+    CGFloat imageWidth = image.size.width;
+    CGFloat imageHeight = image.size.height;
+    
+    //Calculate the centre of the circle
+    
+    // Create and CLIP to a CIRCULAR Path
+    // (This could be replaced with any closed path if you want a different shaped clip)
+    CGContextBeginPath (context);
+    CGContextAddPath(context,[self buildThePathWithCornerRadius:cornerRadius withRectFrame:frame ImageRect:image.size]);
+    CGContextClosePath (context);
+    CGContextClip (context);
+
+    // Draw the IMAGE
+    CGRect myRect = CGRectMake(0, 0, imageWidth, imageHeight);
+    [image drawInRect:myRect];
+    
+    UIImage *newImage = UIGraphicsGetImageFromCurrentImageContext();
+    UIGraphicsEndImageContext();
+    
+    return newImage;
+}
+
++ (CGPathRef)buildThePathWithCornerRadius:(float)cornerRadius withRectFrame:(CGSize)frameRect ImageRect:(CGSize)imgRect
+{
+    
+    float mul = imgRect.width/frameRect.width;
+    
+    UIBezierPath* path = [[UIBezierPath alloc]init];
+    
+    [path addArcWithCenter:CGPointMake(mul*cornerRadius,mul*cornerRadius) radius:mul*cornerRadius startAngle:-M_PI endAngle:-M_PI/2 clockwise:YES];
+   
+    [path addLineToPoint:CGPointMake(imgRect.width - mul * cornerRadius,0)];
+
+    [path addArcWithCenter:CGPointMake(imgRect.width - mul * cornerRadius,mul*cornerRadius) radius:mul*cornerRadius startAngle:-M_PI/2 endAngle:0 clockwise:YES];
+   
+    [path addLineToPoint:CGPointMake(imgRect.width,imgRect.height - mul * cornerRadius)];
+    
+    [path addArcWithCenter:CGPointMake(imgRect.width - mul * cornerRadius,imgRect.height - mul * cornerRadius) radius:mul*cornerRadius startAngle:0 endAngle:-3*M_PI/2 clockwise:YES];
+    
+    [path addLineToPoint:CGPointMake(mul * cornerRadius,imgRect.height)];
+   
+    [path addArcWithCenter:CGPointMake(mul * cornerRadius,imgRect.height - mul * cornerRadius) radius:mul*cornerRadius startAngle:-3*M_PI/2 endAngle:-M_PI clockwise:YES];
+   
+    [path addLineToPoint:CGPointMake(0, mul * cornerRadius)];
+    
+    return [path CGPath];
+
+}
 
 @end

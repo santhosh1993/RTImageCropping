@@ -224,7 +224,7 @@
     {
         finalCropRect = CGRectMake(cropFrameRect.origin.x - (imageView.frame.size.width/2 - self.cropImage.size.width/2) , cropFrameRect.origin.y - (imageView.frame.size.height/2 - self.cropImage.size.height/2) - imageView.frame.origin.y,cropFrameRect.size.width,cropFrameRect.size.height);
     }
-    UIImage *image = [UIImage cropImageWithUIImage:self.cropImage WithCropRect:finalCropRect];
+    UIImage *image = [UIImage cropImageWithUIImage:self.cropImage WithCropRect:finalCropRect withCornerRadius:[self imageCornerRadius] withFrameRect:[self imageCroppingSize]];
 
     
     imageView.image = image;
@@ -314,6 +314,14 @@
         return [self.dataSource imageCroppingSize];
     }
     return CGSizeMake(100,100);
+}
+
+- (float)imageCornerRadius
+{
+    if ([self.dataSource respondsToSelector:@selector(imageCornerRadius)]) {
+        return [self.dataSource imageCornerRadius];
+    }
+    return 0;
 }
 
 @end

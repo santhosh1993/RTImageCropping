@@ -11,7 +11,7 @@
 
 @interface UIImage (RTCropImage)
 
-+ (UIImage *)cropImageWithUIImage:(UIImage *)cropImage WithCropRect:(CGRect)cropRect;
++ (UIImage *)cropImageWithUIImage:(UIImage *)cropImage WithCropRect:(CGRect)cropRect withCornerRadius:(float) cornerRadius withFrameRect:(CGSize)frame;
 + (UIImage *)rotateImage:(UIImage *)image;
 
 @end

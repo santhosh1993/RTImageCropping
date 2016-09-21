@@ -10,7 +10,7 @@
 #import "RTImageCroppingViewController.h"
 #import <AVFoundation/AVFoundation.h>
 
-@interface ViewController ()<UIImagePickerControllerDelegate,UINavigationControllerDelegate,RTImageCroppingViewControllerDelegate>
+@interface ViewController ()<UIImagePickerControllerDelegate,UINavigationControllerDelegate,RTImageCroppingViewControllerDelegate,RTImageCroppingViewControllerDataSource>
 
 @property (weak, nonatomic) IBOutlet UIImageView *croppedImageView;
 
@@ -77,9 +77,17 @@
                 {
                     NSLog(@"please give the permissions to the app for using the camera");
                     dispatch_async(dispatch_get_main_queue(), ^{
-                        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"This app doesn't have access to your Camera. You can turn on it in iOS Settings" message:@"Go to Settings->RTImageCropping" delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
-                        [alert show];
                         
+                        UIAlertController *accessDeniedAlertView = [UIAlertController alertControllerWithTitle:@"This app doesn't have access to your Camera. You can turn on it in iOS Settings" message:@"Go to Settings->RTImageCropping" preferredStyle:UIAlertControllerStyleAlert];
+
+                        
+                        UIAlertAction *cancelAction = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleCancel handler:^(UIAlertAction * _Nonnull action) {
+                            
+                        }];
+                        
+                        [accessDeniedAlertView addAction:cancelAction];
+                        
+                        [self presentViewController:accessDeniedAlertView animated:YES completion:nil];
                     });
                 }
                 else{
@@ -101,6 +109,7 @@
     RTImageCroppingViewController *croppingVc = [[RTImageCroppingViewController alloc] init];
     croppingVc.cropImage = [info objectForKey:@"UIImagePickerControllerOriginalImage"];
     croppingVc.delegate = self;
+    croppingVc.dataSource = self;
     
     [self dismissViewControllerAnimated:YES completion:^{
         [self presentViewController:croppingVc animated:YES completion:^{
@@ -122,6 +131,18 @@
 {
     self.croppedImageView.image = image;
     NSLog(@"%@",image);
+}
+
+#pragma mark - RTImageCroppingViewControllerDataSource
+
+- (CGSize)imageCroppingSize
+{
+   return CGSizeMake(100,100);
+}
+
+- (float)imageCornerRadius
+{
+    return 10.0;
 }
 
 - (void)didReceiveMemoryWarning {

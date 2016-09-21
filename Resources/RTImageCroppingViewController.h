@@ -11,6 +11,7 @@
 @protocol RTImageCroppingViewControllerDataSource <NSObject>
 
 - (CGSize)imageCroppingSize;
+- (float)imageCornerRadius;
 
 @end
 
