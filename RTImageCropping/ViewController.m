@@ -13,6 +13,7 @@
 @interface ViewController ()<UIImagePickerControllerDelegate,UINavigationControllerDelegate,RTImageCroppingViewControllerDelegate,RTImageCroppingViewControllerDataSource>
 
 @property (weak, nonatomic) IBOutlet UIImageView *croppedImageView;
+@property (weak, nonatomic) IBOutlet UISegmentedControl *typeOfImageSegmentControl;
 
 @end
 
@@ -137,12 +138,45 @@
 
 - (CGSize)imageCroppingSize
 {
-   return CGSizeMake(100,100);
+    switch (_typeOfImageSegmentControl.selectedSegmentIndex) {
+        case 0:
+            return CGSizeMake(200,100);
+            break;
+        case 1:
+            return CGSizeMake(100,100);
+            break;
+        case 2:
+            return CGSizeMake(200,100);
+            break;
+        default:
+            return CGSizeMake(100,100);
+            break;
+    }
 }
 
 - (float)imageCornerRadius
 {
-    return 10.0;
+    switch (_typeOfImageSegmentControl.selectedSegmentIndex) {
+        case 0:
+            return 0.0;
+            break;
+        case 1:
+            return 50.0;
+            break;
+        case 2:
+            return 20.0;
+            break;
+        default:
+            return 0.0;
+            break;
+    }
+}
+
+#pragma mark - SECGMENT CONTROL
+
+- (IBAction)selectedSegmentBtnChanged:(UISegmentedControl *)sender
+{
+    [self showActionSheet];
 }
 
 - (void)didReceiveMemoryWarning {

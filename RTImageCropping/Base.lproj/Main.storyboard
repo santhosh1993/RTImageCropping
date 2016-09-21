@@ -30,21 +30,39 @@
                                     <action selector="tapToUpdateImage:" destination="BYZ-38-t0r" eventType="touchDown" id="BSv-Ak-swL"/>
                                 </connections>
                             </button>
+                            <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="ZUB-bD-vpQ">
+                                <rect key="frame" x="10" y="20" width="580" height="41"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="40" id="j1v-2l-FzI"/>
+                                </constraints>
+                                <segments>
+                                    <segment title="Rectangle"/>
+                                    <segment title="Circle"/>
+                                    <segment title="RoundedCorner"/>
+                                </segments>
+                                <connections>
+                                    <action selector="selectedSegmentBtnChanged:" destination="BYZ-38-t0r" eventType="primaryActionTriggered" id="v5D-oF-AY7"/>
+                                </connections>
+                            </segmentedControl>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="kXq-dM-hBl" secondAttribute="bottom" constant="50" id="16p-Ke-W9K"/>
                             <constraint firstItem="kXq-dM-hBl" firstAttribute="trailing" secondItem="8bC-Xf-vdC" secondAttribute="trailing" constant="-20" id="1bu-Cj-4OB"/>
+                            <constraint firstItem="ZUB-bD-vpQ" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="20" id="Cd8-Nq-8n2"/>
                             <constraint firstItem="C94-9a-AKr" firstAttribute="bottom" secondItem="kXq-dM-hBl" secondAttribute="bottom" id="DRQ-qD-cRk"/>
+                            <constraint firstItem="ZUB-bD-vpQ" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" constant="10" id="HSR-PT-sYa"/>
+                            <constraint firstItem="ZUB-bD-vpQ" firstAttribute="trailing" secondItem="8bC-Xf-vdC" secondAttribute="trailing" constant="-10" id="VV7-qH-4hE"/>
                             <constraint firstItem="C94-9a-AKr" firstAttribute="leading" secondItem="kXq-dM-hBl" secondAttribute="leading" id="XNr-ci-YQo"/>
                             <constraint firstItem="kXq-dM-hBl" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" constant="20" id="c6A-RA-YXb"/>
                             <constraint firstItem="C94-9a-AKr" firstAttribute="top" secondItem="kXq-dM-hBl" secondAttribute="top" id="iUF-Mc-gyl"/>
-                            <constraint firstItem="kXq-dM-hBl" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="50" id="m24-8f-bYP"/>
+                            <constraint firstItem="kXq-dM-hBl" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="80" id="m24-8f-bYP"/>
                             <constraint firstItem="C94-9a-AKr" firstAttribute="trailing" secondItem="kXq-dM-hBl" secondAttribute="trailing" id="nG1-AP-dZg"/>
                         </constraints>
                     </view>
                     <connections>
                         <outlet property="croppedImageView" destination="kXq-dM-hBl" id="nsA-t5-aoX"/>
+                        <outlet property="typeOfImageSegmentControl" destination="ZUB-bD-vpQ" id="mY2-xW-m78"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
